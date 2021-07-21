@@ -22,6 +22,12 @@ ORDER BY payment_count DESC
 LIMIT 1;
 
 -- category tablosundan kategori isimlerini ve kategori başına düşen film sayılarını sıralayınız.
-
+SELECT c.name, COUNT(*) AS film_count
+FROM category c
+INNER JOIN film_category f_c
+	ON c.category_id = f_c.category_id
+INNER JOIN film f
+	ON f.film_id = f_c.film_id
+GROUP BY c.name;
 
 -- film tablosunda isminde en az 4 adet 'e' veya 'E' karakteri bulunan kaç tane film vardır?
